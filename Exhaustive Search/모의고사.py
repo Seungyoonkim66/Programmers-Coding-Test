@@ -12,20 +12,26 @@
 
 def solution(answers):
     answer = []
+
     s1 = [1,2,3,4,5]
     s2 = [2,1,2,3,2,4,2,5]
     s3 = [3,3,1,1,2,2,4,4,5,5]
 
-    count = 0
-    # for i in range(40):
-        print(s1 == answers)
+    max = 0
+    for student in[s1, s2, s3]:
+        score = 0
+        for i in range(len(answers)):
+            if student[i%len(s1)] == answers[i] :
+                score += 1
+        if score >= max:
+            answer.append([s1,s2,s3].index(student)+1)
 
-
-    return answer
+    return sorted(answer)
 
 # test case 1
 answers = [1,2,3,4,5]
 print(solution(answers))
+
 # test case 2
-answer=[1,3,2,4,2]
+answers=[1,3,2,4,2]
 print(solution(answers))
