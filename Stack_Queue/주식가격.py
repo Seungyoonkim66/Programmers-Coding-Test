@@ -6,44 +6,59 @@
 # prices의 길이는 2 이상 100,000 이하입니다.
 
 # def solution(prices):
-#     answer = []
-
-#     k = 0
+#     answer = [0] * len(prices)
 #     for i in prices:
-#         diff = 0
-#         for j in prices[k+1:len(prices)]:
-#             if i > j:
-#                 diff += 1
-#                 break
+#         for j in prices[i+1:len(prices)]:  
+#             if prices[i] > prices[j]:
+#                 answer[i] += 1
 #             else:
-#                 diff += 1
-#         answer.append(diff)
-#         k+=1
-
+#                 answer[i] += 1
+#                 break
+#         
+#        
 #     return answer
 
-# https://gurumee92.tistory.com/170
+from collections import deque
 def solution(prices):
-    n = len(prices)
-    answer = [0] * n
-    stack = []
-    for i in range(n):
-        while stack and prices[stack[-1]] > prices[i]:
-            top = stack.pop()
-            answer[top] = i-top
-        stack.append(i)
+    answer = []
+    prices = deque(prices)
 
-    while stack:
-        top = stack.pop()
-        answer[top] = n-1-top
-    
+    while prices:
+        c = prices.popleft()
+        print(c)
+        count = 0
+        for i in prices:
+            if c > i:
+                count += 1
+                break
+            count += 1
+
+        answer.append(count)
+
     return answer
+
+# https://gurumee92.tistory.com/170
+# def solution(prices):
+#     n = len(prices)
+#     answer = [0] * n
+#     stack = []
+#     for i in range(n):
+#         while stack and prices[stack[-1]] > prices[i]:
+#             top = stack.pop()
+#             answer[top] = i-top
+#         stack.append(i)
+
+#     while stack:
+#         top = stack.pop()
+#         answer[top] = n-1-top
+    
+#     return answer
 
 
 
 # test case 1
 prices = [1,2,3,2,3]
-# print(solution(prices))
+print(solution(prices))
 # [4,3,1,1,0]
 
 # test case

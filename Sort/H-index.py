@@ -8,10 +8,15 @@
 # 논문별 인용 횟수는 0회 이상 10,000회 이하입니다.
 
 def solution(citations):
-    answer = 0
-    citations.sort()
-
-    return answer
+    citations.sort(reverse=True)
+    temp = []
+    for i, c in enumerate(citations, start=1):
+        print(min(i,c))
+        temp.append(min(i,c))
+    return max(temp)
+    
+    # answer = max(map(min, enumerate(citations, start=1)))
+    # return answer
 
 
 # test case 1
