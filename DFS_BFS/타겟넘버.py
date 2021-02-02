@@ -14,8 +14,15 @@
 
 
 def solution(numbers, target):
-    answer = 0
-    return answer
+    possible_numbers = [0]
+    for i in numbers:
+        processing_numbers = []
+        for j in possible_numbers:
+            processing_numbers.append(j+i)
+            processing_numbers.append(j-i)
+        possible_numbers = processing_numbers
+
+    return possible_numbers.count(target)
 
 
 # test case 1

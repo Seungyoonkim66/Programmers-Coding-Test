@@ -11,7 +11,6 @@ def solution(citations):
     citations.sort(reverse=True)
     temp = []
     for i, c in enumerate(citations, start=1):
-        print(min(i,c))
         temp.append(min(i,c))
     return max(temp)
     
