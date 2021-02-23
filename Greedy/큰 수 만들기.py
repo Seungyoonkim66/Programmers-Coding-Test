@@ -12,25 +12,27 @@
 #     return ''.join(max(list(combinations(number,len(number)-k))))  
 
 def solution(number, k):
+    answer = []
+    for (i,num) in enumerate(number):
+        while answer and answer[-1]<num and k>0:
+            answer.pop()
+            k-=1
 
-    max = number[0]
-    for i in range(len(number)-k):
-        max = number[number.index(max)+1]
-        for j in number[number.index(max)+1:]:
-            if max < j:
-                max = j 
-                break
-            print(j, end='')
-        print()
+        if k == 0:
+            answer += number[i:]
+            break
+        answer.append(num)
+    answer = answer[:-k] if k > 0  else answer
 
 
-    return 0
+               
+    return ''.join(answer)
 
 
 # test case 1
-# print(solution("1924", 2)) # 94
+print(solution("1924", 2)) # 94
 # test case 2
 print(solution("1231234", 3)) #3234
 # test case 3
-# print(solution("4177252841", 4)) #775841
+print(solution("4177252841", 4)) #775841
 
