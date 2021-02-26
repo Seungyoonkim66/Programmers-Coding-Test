@@ -22,9 +22,10 @@ def solution(number, k):
             answer += number[i:]
             break
         answer.append(num)
-    answer = answer[:-k] if k > 0  else answer
 
-
+    # 처음부터 
+    if k != 0:
+        answer = answer[:-k] 
                
     return ''.join(answer)
 

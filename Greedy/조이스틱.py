@@ -24,6 +24,11 @@ def solution(name):
     alphabet = [chr(a) for a in range(65, 91)]
     print(alphabet)
     for i in name:
+        if i == 'A':
+            
+            answer += 1
+        
+
         print(alphabet.index(i))
 
     return answer
