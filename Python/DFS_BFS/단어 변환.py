@@ -13,9 +13,10 @@
 # 변환할 수 없는 경우에는 0를 return 합니다.
 
 def solution(begin, target, words):
+    # 가장 먼저 target 단어가 words 리스트에 없으면 바로 0을 반환하도록 합니다.
     if target not in words:
         return 0
-        
+
     answer = 0
     # DFS에 사용할 stack에 시작 노드인 begin을 넣어줍니다.
     stack = [begin]
@@ -23,8 +24,6 @@ def solution(begin, target, words):
     # visited라는 자료구조로 탐색 여부를 관리합니다.
     # 아직 탐색한 단어가 없으므로 전부 0으로 세팅해줍니다.
     visited = [0] * len(words)
-
-    
     
     
     while stack:
